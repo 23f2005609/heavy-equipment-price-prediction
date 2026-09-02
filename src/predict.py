@@ -5,25 +5,44 @@ import pandas as pd
 
 from src.feature_engineering import feature_engineering
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODEL_DIR = os.path.join(BASE_DIR, "models")
 
+BASE_DIR = os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))
+)
+
+MODEL_DIR = os.path.join(
+    BASE_DIR,
+    "models"
+)
+
+
+# Final deployment artifacts
 processor = joblib.load(
-    os.path.join(MODEL_DIR, "preprocessor.pkl")
+    os.path.join(
+        MODEL_DIR,
+        "preprocessor_deploy.pkl"
+    )
 )
 
 xgb_model = joblib.load(
-    os.path.join(MODEL_DIR, "xgb_model.pkl")
+    os.path.join(
+        MODEL_DIR,
+        "xgb_deploy_model.pkl"
+    )
 )
 
 feature_columns = joblib.load(
-    os.path.join(MODEL_DIR, "feature_columns.pkl")
+    os.path.join(
+        MODEL_DIR,
+        "feature_columns_deploy.pkl"
+    )
 )
 
 
 def predict_price(data):
     """
-    Predict equipment resale price using the trained XGBoost model.
+    Predict equipment resale price using
+    the lightweight deployment XGBoost model.
     """
 
     if isinstance(data, dict):
@@ -37,19 +56,24 @@ def predict_price(data):
     # Preprocessing
     X_processed = processor.transform(data)
 
-    # Ensure exact feature order used during training
+    # Ensure exact feature order
     X_processed = X_processed.reindex(
         columns=feature_columns,
         fill_value=0
     )
 
     # XGBoost prediction
-    log_prediction = xgb_model.predict(X_processed)
+    log_prediction = xgb_model.predict(
+        X_processed
+    )
 
-    # Reverse log1p transformation
+    # Convert log prediction back to price
     prediction = np.expm1(log_prediction)
 
-    # Prevent negative prices
-    prediction = np.clip(prediction, 0, None)
+    prediction = np.clip(
+        prediction,
+        0,
+        None
+    )
 
     return float(prediction[0])
