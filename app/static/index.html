@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Heavy Equipment Price Predictor</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <!-- Background decoration -->
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+
+    <main class="page">
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="hero">
+
+            <div class="brand-icon">
+                ⚙
+            </div>
+
+            <div>
+                <p class="eyebrow">MACHINE LEARNING • PRICE ESTIMATION</p>
+
+                <h1>
+                    Heavy Equipment
+                    <span>Price Predictor</span>
+                </h1>
+
+                <p class="subtitle">
+                    Estimate the resale value of heavy equipment
+                    using machine learning.
+                </p>
+            </div>
+
+        </header>
+
+
+        <!-- ================= MAIN CARD ================= -->
+
+        <section class="prediction-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Equipment Details</h2>
+
+                    <p>
+                        Enter the available equipment information
+                        to generate an estimated selling price.
+                    </p>
+                </div>
+
+                <div class="model-badge">
+                    <span class="status-dot"></span>
+                    ML Model Ready
+                </div>
+
+            </div>
+
+
+            <form id="predictionForm">
+
+                <!-- ================= BASIC DETAILS ================= -->
+
+                <div class="section-title">
+                    <span class="section-number">01</span>
+
+                    <div>
+                        <h3>Basic Information</h3>
+                        <p>Age and usage details of the equipment.</p>
+                    </div>
+                </div>
+
+
+                <div class="form-grid">
+
+                    <!-- Manufacture Year -->
+
+                    <div class="form-group">
+
+                        <label for="ManufactureYear">
+                            Manufacture Year
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            id="ManufactureYear"
+                            placeholder="e.g. 2018"
+                            min="1950"
+                            max="2026"
+                            required
+                        >
+
+                        <small>
+                            Year when the machine was manufactured.
+                        </small>
+
+                    </div>
+
+
+                    <!-- Operational Hours -->
+
+                    <div class="form-group">
+
+                        <label for="OperationalHoursMeter">
+                            Operational Hours
+                            <span class="optional">Optional</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            id="OperationalHoursMeter"
+                            placeholder="e.g. 5200"
+                            min="0"
+                            step="1"
+                        >
+
+                        <small>
+                            Total operating hours recorded.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= MACHINE DETAILS ================= -->
+
+                <div class="section-title">
+
+                    <span class="section-number">02</span>
+
+                    <div>
+                        <h3>Machine Configuration</h3>
+                        <p>Select the characteristics that describe the machine.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- Utilization -->
+
+                    <div class="form-group">
+
+                        <label for="UtilizationTier">
+                            Utilization Tier
+                            <span class="optional">Optional</span>
+                        </label>
+
+                        <select id="UtilizationTier">
+
+                            <option value="">
+                                Unknown / Missing
+                            </option>
+
+                            <option value="Low">Low</option>
+
+                            <option value="Medium">Medium</option>
+
+                            <option value="High">High</option>
+
+                        </select>
+
+                        <small>
+                            General level of machine utilization.
+                        </small>
+
+                    </div>
+
+
+                    <!-- Asset Scale -->
+
+                    <div class="form-group">
+
+                        <label for="AssetScaleFactor">
+                            Asset Scale Factor
+                            <span class="optional">Optional</span>
+                        </label>
+
+                        <select id="AssetScaleFactor">
+
+                            <option value="">
+                                Unknown / Missing
+                            </option>
+
+                            <option value="Compact">
+                                Compact
+                            </option>
+
+                            <option value="Mini">
+                                Mini
+                            </option>
+
+                            <option value="Small">
+                                Small
+                            </option>
+
+                            <option value="Medium">
+                                Medium
+                            </option>
+
+                            <option value="Large / Medium">
+                                Large / Medium
+                            </option>
+
+                            <option value="Large">
+                                Large
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Functional Classification -->
+
+                    <div class="form-group full-width">
+
+                        <label for="FunctionalClassification">
+                            Functional Classification
+                            <span class="optional">Optional</span>
+                        </label>
+
+                        <input
+                            list="functionalCategories"
+                            id="FunctionalClassification"
+                            placeholder="Search equipment type or capacity..."
+                            autocomplete="off"
+                        >
+
+                        <datalist id="functionalCategories">
+
+                            <option value="Hydraulic Excavator, Track - 21.0 to 24.0 Metric Tons">
+                            <option value="Motorgrader - 145.0 to 170.0 Horsepower">
+                            <option value="Hydraulic Excavator, Track - 12.0 to 14.0 Metric Tons">
+                            <option value="Backhoe Loader - 14.0 to 15.0 Ft Standard Digging Depth">
+                            <option value="Hydraulic Excavator, Track - 33.0 to 40.0 Metric Tons">
+                            <option value="Motorgrader - 45.0 to 130.0 Horsepower">
+                            <option value="Hydraulic Excavator, Track - 19.0 to 21.0 Metric Tons">
+                            <option value="Wheel Loader - 150.0 to 175.0 Horsepower">
+                            <option value="Motorgrader - 130.0 to 145.0 Horsepower">
+                            <option value="Hydraulic Excavator, Track - 28.0 to 33.0 Metric Tons">
+                            <option value="Hydraulic Excavator, Track - 40.0 to 50.0 Metric Tons">
+                            <option value="Hydraulic Excavator, Track - 24.0 to 28.0 Metric Tons">
+                            <option value="Hydraulic Excavator, Track - 14.0 to 16.0 Metric Tons">
+                            <option value="Hydraulic Excavator, Track - 6.0 to 8.0 Metric Tons">
+                            <option value="Hydraulic Excavator, Track - 16.0 to 19.0 Metric Tons">
+                            <option value="Hydraulic Excavator, Track - 3.0 to 4.0 Metric Tons">
+                            <option value="Track Type Tractor, Dozer - 130.0 to 160.0 Horsepower">
+                            <option value="Track Type Tractor, Dozer - 160.0 to 190.0 Horsepower">
+                            <option value="Motorgrader - 170.0 to 200.0 Horsepower">
+                            <option value="Wheel Loader - 175.0 to 200.0 Horsepower">
+                            <option value="Hydraulic Excavator, Track - 2.0 to 3.0 Metric Tons">
+                            <option value="Wheel Loader - 120.0 to 135.0 Horsepower">
+                            <option value="Track Type Tractor, Dozer - 85.0 to 105.0 Horsepower">
+                            <option value="Wheel Loader - 275.0 to 350.0 Horsepower">
+                            <option value="Hydraulic Excavator, Track - 8.0 to 11.0 Metric Tons">
+                            <option value="Track Type Tractor, Dozer - 105.0 to 130.0 Horsepower">
+                            <option value="Hydraulic Excavator, Track - 4.0 to 5.0 Metric Tons">
+                            <option value="Hydraulic Excavator, Track - 5.0 to 6.0 Metric Tons">
+                            <option value="Track Type Tractor, Dozer - 20.0 to 75.0 Horsepower">
+                            <option value="Wheel Loader - 200.0 to 225.0 Horsepower">
+                            <option value="Wheel Loader - 60.0 to 80.0 Horsepower">
+                            <option value="Wheel Loader - 135.0 to 150.0 Horsepower">
+                            <option value="Hydraulic Excavator, Track - 11.0 to 12.0 Metric Tons">
+                            <option value="Backhoe Loader - 15.0 to 16.0 Ft Standard Digging Depth">
+                            <option value="Motorgrader - 200.0 + Horsepower">
+                            <option value="Hydraulic Excavator, Track - 50.0 to 66.0 Metric Tons">
+                            <option value="Track Type Tractor, Dozer - 260.0 + Horsepower">
+                            <option value="Track Type Tractor, Dozer - 190.0 to 260.0 Horsepower">
+                            <option value="Track Type Tractor, Dozer - 75.0 to 85.0 Horsepower">
+                            <option value="Backhoe Loader - 0.0 to 14.0 Ft Standard Digging Depth">
+                            <option value="Hydraulic Excavator, Track - 0.0 to 2.0 Metric Tons">
+                            <option value="Wheel Loader - 350.0 to 500.0 Horsepower">
+                            <option value="Wheel Loader - 225.0 to 250.0 Horsepower">
+                            <option value="Wheel Loader - 250.0 to 275.0 Horsepower">
+                            <option value="Backhoe Loader - 16.0 + Ft Standard Digging Depth">
+                            <option value="Wheel Loader - 100.0 to 110.0 Horsepower">
+                            <option value="Hydraulic Excavator, Track - 66.0 to 90.0 Metric Tons">
+                            <option value="Backhoe Loader - Unidentified">
+                            <option value="Wheel Loader - 40.0 to 60.0 Horsepower">
+                            <option value="Wheel Loader - 110.0 to 120.0 Horsepower">
+                            <option value="Wheel Loader - 500.0 to 1000.0 Horsepower">
+                            <option value="Wheel Loader - 90.0 to 100.0 Horsepower">
+                            <option value="Wheel Loader - 80.0 to 90.0 Horsepower">
+                            <option value="Wheel Loader - 0.0 to 40.0 Horsepower">
+                            <option value="Hydraulic Excavator, Track - 90.0 to 150.0 Metric Tons">
+                            <option value="Skid Steer Loader - 1351.0 to 1601.0 Lb Operating Capacity">
+                            <option value="Skid Steer Loader - 1601.0 to 1751.0 Lb Operating Capacity">
+                            <option value="Hydraulic Excavator, Track - 4.0 to 6.0 Metric Tons">
+                            <option value="Skid Steer Loader - 1751.0 to 2201.0 Lb Operating Capacity">
+                            <option value="Hydraulic Excavator, Track - Unidentified">
+                            <option value="Hydraulic Excavator, Track - 150.0 to 300.0 Metric Tons">
+                            <option value="Skid Steer Loader - 2201.0 to 2701.0 Lb Operating Capacity">
+                            <option value="Wheel Loader - Unidentified">
+                            <option value="Hydraulic Excavator, Track - 300.0 + Metric Tons">
+                            <option value="Wheel Loader - 1000.0 + Horsepower">
+
+                        </datalist>
+
+                        <small>
+                            Start typing to search machine type, power,
+                            capacity, or digging depth.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= LOCATION & FEATURES ================= -->
+
+                <div class="section-title">
+
+                    <span class="section-number">03</span>
+
+                    <div>
+                        <h3>Location & Features</h3>
+                        <p>Regional and machine configuration details.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- Region -->
+
+                    <div class="form-group">
+
+                        <label for="RegionCode">
+                            Region
+                            <span class="optional">Optional</span>
+                        </label>
+
+                        <input
+                            list="regions"
+                            id="RegionCode"
+                            placeholder="Search state or region..."
+                            autocomplete="off"
+                        >
+
+                        <datalist id="regions">
+
+                            <option value="Alabama">
+                            <option value="Alaska">
+                            <option value="Arizona">
+                            <option value="Arkansas">
+                            <option value="California">
+                            <option value="Colorado">
+                            <option value="Connecticut">
+                            <option value="Delaware">
+                            <option value="Florida">
+                            <option value="Georgia">
+                            <option value="Hawaii">
+                            <option value="Idaho">
+                            <option value="Illinois">
+                            <option value="Indiana">
+                            <option value="Iowa">
+                            <option value="Kansas">
+                            <option value="Kentucky">
+                            <option value="Louisiana">
+                            <option value="Maine">
+                            <option value="Maryland">
+                            <option value="Massachusetts">
+                            <option value="Michigan">
+                            <option value="Minnesota">
+                            <option value="Mississippi">
+                            <option value="Missouri">
+                            <option value="Montana">
+                            <option value="Nebraska">
+                            <option value="Nevada">
+                            <option value="New Hampshire">
+                            <option value="New Jersey">
+                            <option value="New Mexico">
+                            <option value="New York">
+                            <option value="North Carolina">
+                            <option value="North Dakota">
+                            <option value="Ohio">
+                            <option value="Oklahoma">
+                            <option value="Oregon">
+                            <option value="Pennsylvania">
+                            <option value="Rhode Island">
+                            <option value="South Carolina">
+                            <option value="South Dakota">
+                            <option value="Tennessee">
+                            <option value="Texas">
+                            <option value="Utah">
+                            <option value="Vermont">
+                            <option value="Virginia">
+                            <option value="Washington">
+                            <option value="Washington DC">
+                            <option value="West Virginia">
+                            <option value="Wisconsin">
+                            <option value="Wyoming">
+                            <option value="Puerto Rico">
+                            <option value="Unspecified">
+
+                        </datalist>
+
+                    </div>
+
+
+                    <!-- Cabin -->
+
+                    <div class="form-group">
+
+                        <label for="CabinType">
+                            Cabin Type
+                            <span class="optional">Optional</span>
+                        </label>
+
+                        <select id="CabinType">
+
+                            <option value="">
+                                Unknown / Missing
+                            </option>
+
+                            <option value="EROPS">
+                                EROPS
+                            </option>
+
+                            <option value="EROPS w AC">
+                                EROPS w AC
+                            </option>
+
+                            <option value="OROPS">
+                                OROPS
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Forks -->
+
+                    <div class="form-group">
+
+                        <label for="Forks">
+                            Forks
+                            <span class="optional">Optional</span>
+                        </label>
+
+                        <select id="Forks">
+
+                            <option value="">
+                                Unknown / Missing
+                            </option>
+
+                            <option value="None or Unspecified">
+                                None or Unspecified
+                            </option>
+
+                            <option value="Yes">
+                                Yes
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Drivetrain -->
+
+                    <div class="form-group">
+
+                        <label for="DrivetrainType">
+                            Drivetrain Type
+                            <span class="optional">Optional</span>
+                        </label>
+
+                        <select id="DrivetrainType">
+
+                            <option value="">
+                                Unknown / Missing
+                            </option>
+
+                            <option value="Standard">
+                                Standard
+                            </option>
+
+                            <option value="Powershift">
+                                Powershift
+                            </option>
+
+                            <option value="Hydrostatic">
+                                Hydrostatic
+                            </option>
+
+                            <option value="Powershuttle">
+                                Powershuttle
+                            </option>
+
+                            <option value="AutoShift">
+                                AutoShift
+                            </option>
+
+                            <option value="Direct Drive">
+                                Direct Drive
+                            </option>
+
+                            <option value="None or Unspecified">
+                                None or Unspecified
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Specification -->
+
+                    <div class="form-group full-width">
+
+                        <label for="Spec_FullDescriptor">
+                            Equipment Specification
+                            <span class="optional">Optional</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="Spec_FullDescriptor"
+                            placeholder="e.g. 140G, 320CL, PC200LC6"
+                            autocomplete="off"
+                        >
+
+                        <small>
+                            Enter the machine's model/specification.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= ACTIONS ================= -->
+
+                <div class="actions">
+
+                    <button
+                        type="button"
+                        id="resetButton"
+                        class="reset-button"
+                    >
+                        Reset
+                    </button>
+
+                    <button
+                        type="submit"
+                        id="predictButton"
+                        class="predict-button"
+                    >
+                        <span id="buttonText">
+                            Predict Selling Price
+                        </span>
+
+                        <span
+                            id="spinner"
+                            class="spinner hidden"
+                        ></span>
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <!-- ================= STATUS ================= -->
+
+            <div
+                id="loading"
+                class="loading hidden"
+            >
+                Processing equipment information...
+            </div>
+
+
+            <!-- ================= RESULT ================= -->
+
+            <div
+                id="result"
+                class="result hidden"
+            >
+
+                <div class="result-icon">
+                    ✓
+                </div>
+
+                <div class="result-content">
+
+                    <p class="result-label">
+                        ESTIMATED SELLING PRICE
+                    </p>
+
+                    <h2 id="predictedPrice">
+                        ₹0
+                    </h2>
+
+                    <p class="result-description">
+                        Estimated resale value based on the
+                        equipment characteristics provided.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= ERROR ================= -->
+
+            <div
+                id="error"
+                class="error hidden"
+            ></div>
+
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            <span>
+                Machine Learning Price Prediction
+            </span>
+
+            <span class="footer-separator">•</span>
+
+            <span>
+                XGBoost + CatBoost Ensemble
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <script src="/static/script.js"></script>
+
+</body>
+
+</html>

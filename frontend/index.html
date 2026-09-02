@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heavy Equipment Price Predictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Heavy Equipment Price Predictor</h1>
+        <p>Predict the selling price of heavy equipment using machine learning.</p>
+    </div>
+
+    <div class="card">
+
+        <h2>Machine Details</h2>
+
+        <form id="predictionForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Asset ID</label>
+                    <input type="number" id="AssetID" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Product Configuration ID</label>
+                    <input type="number" id="ProductConfigID" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Manufacture Year</label>
+                    <input type="number" id="ManufactureYear" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Operational Hours</label>
+                    <input type="number" id="OperationalHoursMeter">
+                </div>
+
+                <div class="form-group">
+                    <label>Utilization Tier</label>
+                    <select id="UtilizationTier">
+                        <option value="Missing">Missing</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Region Code</label>
+                    <input type="text" id="RegionCode">
+                </div>
+
+                <div class="form-group">
+                    <label>Vendor Partner ID</label>
+                    <input type="text" id="VendorPartnerID">
+                </div>
+
+                <div class="form-group">
+                    <label>Spec Full Descriptor</label>
+                    <input type="text" id="Spec_FullDescriptor">
+                </div>
+
+                <div class="form-group">
+                    <label>Spec Base Class</label>
+                    <input type="text" id="Spec_BaseClass">
+                </div>
+
+                <div class="form-group">
+                    <label>Spec Sub Class</label>
+                    <input type="text" id="Spec_SubClass">
+                </div>
+
+                <div class="form-group">
+                    <label>Cabin Type</label>
+                    <input type="text" id="CabinType">
+                </div>
+
+                <div class="form-group">
+                    <label>Drivetrain Type</label>
+                    <input type="text" id="DrivetrainType">
+                </div>
+
+            </div>
+
+            <button type="submit">
+                Predict Selling Price
+            </button>
+
+        </form>
+
+        <div id="result" class="result hidden">
+            <p>Predicted Selling Price</p>
+            <h2 id="price">₹0</h2>
+        </div>
+
+        <div id="error" class="error hidden"></div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
