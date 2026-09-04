@@ -835,3 +835,143 @@ footer {
     }
 
 }
+
+/* =========================================
+   DARK MODE — COMPLETE THEME
+========================================= */
+
+body.dark-mode {
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(37, 99, 235, 0.18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(99, 102, 241, 0.14),
+            transparent 35%
+        ),
+        #0b1120;
+
+    color: #e5e7eb;
+}
+
+
+/* Header */
+
+body.dark-mode .eyebrow {
+    color: #60a5fa;
+}
+
+body.dark-mode h1 {
+    color: #f8fafc;
+}
+
+body.dark-mode h1 span {
+    color: #4f8cff;
+}
+
+body.dark-mode .subtitle {
+    color: #94a3b8;
+}
+
+
+/* Main card */
+
+body.dark-mode .prediction-card {
+    background: rgba(17, 24, 39, 0.94);
+    border-color: rgba(148, 163, 184, 0.15);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Card text */
+
+body.dark-mode .card-header h2,
+body.dark-mode .section-title h3,
+body.dark-mode label {
+    color: #f8fafc;
+}
+
+body.dark-mode .card-header p,
+body.dark-mode .section-title p,
+body.dark-mode small {
+    color: #94a3b8;
+}
+
+
+/* Section divider */
+
+body.dark-mode .card-header {
+    border-bottom-color: rgba(148, 163, 184, 0.14);
+}
+
+
+/* Inputs */
+
+body.dark-mode input,
+body.dark-mode select {
+    background: #111827;
+    color: #f1f5f9;
+    border-color: #334155;
+}
+
+body.dark-mode input::placeholder {
+    color: #64748b;
+}
+
+body.dark-mode input:focus,
+body.dark-mode select:focus {
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 0 4px rgba(59, 130, 246, 0.14);
+}
+
+
+/* Section numbers */
+
+body.dark-mode .section-number {
+    background: rgba(59, 130, 246, 0.14);
+    border-color: rgba(59, 130, 246, 0.25);
+    color: #60a5fa;
+}
+
+
+/* Optional labels */
+
+body.dark-mode .optional {
+    background: rgba(148, 163, 184, 0.12);
+    color: #94a3b8;
+}
+
+
+/* Model badge */
+
+body.dark-mode .model-badge {
+    background: rgba(34, 197, 94, 0.08);
+    border-color: rgba(34, 197, 94, 0.25);
+    color: #86efac;
+}
+
+
+/* Theme button */
+
+body.dark-mode .theme-toggle {
+    background: rgba(30, 41, 59, 0.92);
+    border-color: rgba(148, 163, 184, 0.2);
+    color: #f8fafc;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Footer */
+
+body.dark-mode footer {
+    color: #64748b;
+}
