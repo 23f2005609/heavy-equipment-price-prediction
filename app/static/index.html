@@ -12,23 +12,38 @@
 
 <body>
 
-    <!-- Background decoration -->
+
+    <!-- =====================================================
+         BACKGROUND DECORATION
+         ===================================================== -->
+
     <div class="background-glow glow-one"></div>
     <div class="background-glow glow-two"></div>
 
 
     <main class="page">
 
-        <!-- ================= HEADER ================= -->
+
+        <!-- =================================================
+             HEADER
+             ================================================= -->
 
         <header class="hero">
+
+            <button type="button" id="themeToggle" class="theme-toggle">
+                <span id="themeIcon">🌙</span>
+                <span id="themeText">Dark mode</span>
+            </button>
 
             <div class="brand-icon">
                 🏗️
             </div>
 
             <div>
-                <p class="eyebrow">MACHINE LEARNING • PRICE ESTIMATION</p>
+
+                <p class="eyebrow">
+                    MACHINE LEARNING • PRICE ESTIMATION
+                </p>
 
                 <h1>
                     Heavy Equipment
@@ -39,67 +54,101 @@
                     Estimate the resale value of heavy equipment
                     using machine learning.
                 </p>
+
             </div>
 
         </header>
 
 
-        <!-- ================= MAIN CARD ================= -->
+        <!-- =================================================
+             MAIN PREDICTION CARD
+             ================================================= -->
 
         <section class="prediction-card">
+
+
+            <!-- =================================================
+                 CARD HEADER
+                 ================================================= -->
 
             <div class="card-header">
 
                 <div>
-                    <h2>Equipment Details</h2>
+
+                    <h2>
+                        Equipment Details
+                    </h2>
 
                     <p>
                         Enter the available equipment information
                         to generate an estimated selling price.
                     </p>
+
                 </div>
 
+
                 <div class="model-badge">
+
                     <span class="status-dot"></span>
+
                     ML Model Ready
+
                 </div>
 
             </div>
 
 
+            <!-- =================================================
+                 FORM
+                 ================================================= -->
+
             <form id="predictionForm">
 
-                <!-- ================= BASIC DETAILS ================= -->
+
+                <!-- =================================================
+                     SECTION 01 — BASIC INFORMATION
+                     ================================================= -->
 
                 <div class="section-title">
-                    <span class="section-number">01</span>
+
+                    <span class="section-number">
+                        01
+                    </span>
 
                     <div>
-                        <h3>Basic Information</h3>
-                        <p>Age and usage details of the equipment.</p>
+
+                        <h3>
+                            Basic Information
+                        </h3>
+
+                        <p>
+                            Age and usage details of the equipment.
+                        </p>
+
                     </div>
+
                 </div>
 
 
                 <div class="form-grid">
+
 
                     <!-- Manufacture Year -->
 
                     <div class="form-group">
 
                         <label for="ManufactureYear">
+
                             Manufacture Year
-                            <span class="required">*</span>
+
+                            <span class="required">
+                                *
+                            </span>
+
                         </label>
 
-                        <input
-                            type="number"
-                            id="ManufactureYear"
-                            placeholder="e.g. 2018"
-                            min="1950"
-                            max="2026"
-                            required
-                        >
+                        <input type="number" id="ManufactureYear" placeholder="e.g. 2018" min="1950" max="2026"
+                            required>
 
                         <small>
                             Year when the machine was manufactured.
@@ -113,17 +162,16 @@
                     <div class="form-group">
 
                         <label for="OperationalHoursMeter">
+
                             Operational Hours
-                            <span class="optional">Optional</span>
+
+                            <span class="optional">
+                                Optional
+                            </span>
+
                         </label>
 
-                        <input
-                            type="number"
-                            id="OperationalHoursMeter"
-                            placeholder="e.g. 5200"
-                            min="0"
-                            step="1"
-                        >
+                        <input type="number" id="OperationalHoursMeter" placeholder="e.g. 5200" min="0" step="1">
 
                         <small>
                             Total operating hours recorded.
@@ -134,15 +182,27 @@
                 </div>
 
 
-                <!-- ================= MACHINE DETAILS ================= -->
+                <!-- =================================================
+                     SECTION 02 — MACHINE CONFIGURATION
+                     ================================================= -->
 
                 <div class="section-title">
 
-                    <span class="section-number">02</span>
+                    <span class="section-number">
+                        02
+                    </span>
 
                     <div>
-                        <h3>Machine Configuration</h3>
-                        <p>Select the characteristics that describe the machine.</p>
+
+                        <h3>
+                            Machine Configuration
+                        </h3>
+
+                        <p>
+                            Select the characteristics that describe
+                            the machine.
+                        </p>
+
                     </div>
 
                 </div>
@@ -151,13 +211,18 @@
                 <div class="form-grid">
 
 
-                    <!-- Utilization -->
+                    <!-- Utilization Tier -->
 
                     <div class="form-group">
 
                         <label for="UtilizationTier">
+
                             Utilization Tier
-                            <span class="optional">Optional</span>
+
+                            <span class="optional">
+                                Optional
+                            </span>
+
                         </label>
 
                         <select id="UtilizationTier">
@@ -166,11 +231,17 @@
                                 Unknown / Missing
                             </option>
 
-                            <option value="Low">Low</option>
+                            <option value="Low">
+                                Low
+                            </option>
 
-                            <option value="Medium">Medium</option>
+                            <option value="Medium">
+                                Medium
+                            </option>
 
-                            <option value="High">High</option>
+                            <option value="High">
+                                High
+                            </option>
 
                         </select>
 
@@ -181,13 +252,18 @@
                     </div>
 
 
-                    <!-- Asset Scale -->
+                    <!-- Asset Scale Factor -->
 
                     <div class="form-group">
 
                         <label for="AssetScaleFactor">
+
                             Asset Scale Factor
-                            <span class="optional">Optional</span>
+
+                            <span class="optional">
+                                Optional
+                            </span>
+
                         </label>
 
                         <select id="AssetScaleFactor">
@@ -230,16 +306,18 @@
                     <div class="form-group full-width">
 
                         <label for="FunctionalClassification">
+
                             Functional Classification
-                            <span class="optional">Optional</span>
+
+                            <span class="optional">
+                                Optional
+                            </span>
+
                         </label>
 
-                        <input
-                            list="functionalCategories"
-                            id="FunctionalClassification"
-                            placeholder="Search equipment type or capacity..."
-                            autocomplete="off"
-                        >
+                        <input list="functionalCategories" id="FunctionalClassification"
+                            placeholder="Search equipment type or capacity..." autocomplete="off">
+
 
                         <datalist id="functionalCategories">
 
@@ -312,8 +390,8 @@
                         </datalist>
 
                         <small>
-                            Start typing to search machine type, power,
-                            capacity, or digging depth.
+                            Start typing to search machine type,
+                            power, capacity, or digging depth.
                         </small>
 
                     </div>
@@ -321,15 +399,26 @@
                 </div>
 
 
-                <!-- ================= LOCATION & FEATURES ================= -->
+                <!-- =================================================
+                     SECTION 03 — LOCATION & FEATURES
+                     ================================================= -->
 
                 <div class="section-title">
 
-                    <span class="section-number">03</span>
+                    <span class="section-number">
+                        03
+                    </span>
 
                     <div>
-                        <h3>Location & Features</h3>
-                        <p>Regional and machine configuration details.</p>
+
+                        <h3>
+                            Location & Features
+                        </h3>
+
+                        <p>
+                            Regional and machine configuration details.
+                        </p>
+
                     </div>
 
                 </div>
@@ -343,16 +432,18 @@
                     <div class="form-group">
 
                         <label for="RegionCode">
+
                             Region
-                            <span class="optional">Optional</span>
+
+                            <span class="optional">
+                                Optional
+                            </span>
+
                         </label>
 
-                        <input
-                            list="regions"
-                            id="RegionCode"
-                            placeholder="Search state or region..."
-                            autocomplete="off"
-                        >
+                        <input list="regions" id="RegionCode" placeholder="Search state or region..."
+                            autocomplete="off">
+
 
                         <datalist id="regions">
 
@@ -412,16 +503,25 @@
 
                         </datalist>
 
+                        <small>
+                            Search by state or region.
+                        </small>
+
                     </div>
 
 
-                    <!-- Cabin -->
+                    <!-- Cabin Type -->
 
                     <div class="form-group">
 
                         <label for="CabinType">
+
                             Cabin Type
-                            <span class="optional">Optional</span>
+
+                            <span class="optional">
+                                Optional
+                            </span>
+
                         </label>
 
                         <select id="CabinType">
@@ -452,8 +552,13 @@
                     <div class="form-group">
 
                         <label for="Forks">
+
                             Forks
-                            <span class="optional">Optional</span>
+
+                            <span class="optional">
+                                Optional
+                            </span>
+
                         </label>
 
                         <select id="Forks">
@@ -480,8 +585,13 @@
                     <div class="form-group">
 
                         <label for="DrivetrainType">
+
                             Drivetrain Type
-                            <span class="optional">Optional</span>
+
+                            <span class="optional">
+                                Optional
+                            </span>
+
                         </label>
 
                         <select id="DrivetrainType">
@@ -523,24 +633,25 @@
                     </div>
 
 
-                    <!-- Specification -->
+                    <!-- Equipment Specification -->
 
                     <div class="form-group full-width">
 
                         <label for="Spec_FullDescriptor">
+
                             Equipment Specification
-                            <span class="optional">Optional</span>
+
+                            <span class="optional">
+                                Optional
+                            </span>
+
                         </label>
 
-                        <input
-                            type="text"
-                            id="Spec_FullDescriptor"
-                            placeholder="e.g. 140G, 320CL, PC200LC6"
-                            autocomplete="off"
-                        >
+                        <input type="text" id="Spec_FullDescriptor" placeholder="e.g. 140G, 320CL, PC200LC6"
+                            autocomplete="off">
 
                         <small>
-                            Enter the machine's model/specification.
+                            Enter the machine's model or specification.
                         </small>
 
                     </div>
@@ -548,31 +659,25 @@
                 </div>
 
 
-                <!-- ================= ACTIONS ================= -->
+                <!-- =================================================
+                     ACTION BUTTONS
+                     ================================================= -->
 
                 <div class="actions">
 
-                    <button
-                        type="button"
-                        id="resetButton"
-                        class="reset-button"
-                    >
+                    <button type="button" id="resetButton" class="reset-button">
                         Reset
                     </button>
 
-                    <button
-                        type="submit"
-                        id="predictButton"
-                        class="predict-button"
-                    >
+
+                    <button type="submit" id="predictButton" class="predict-button">
+
                         <span id="buttonText">
                             Predict Selling Price
                         </span>
 
-                        <span
-                            id="spinner"
-                            class="spinner hidden"
-                        ></span>
+                        <span id="spinner" class="spinner hidden"></span>
+
                     </button>
 
                 </div>
@@ -580,26 +685,25 @@
             </form>
 
 
-            <!-- ================= STATUS ================= -->
+            <!-- =================================================
+                 LOADING
+                 ================================================= -->
 
-            <div
-                id="loading"
-                class="loading hidden"
-            >
+            <div id="loading" class="loading hidden">
                 Processing equipment information...
             </div>
 
 
-            <!-- ================= RESULT ================= -->
+            <!-- =================================================
+                 RESULT
+                 ================================================= -->
 
-            <div
-                id="result"
-                class="result hidden"
-            >
+            <div id="result" class="result hidden">
 
                 <div class="result-icon">
                     ✓
                 </div>
+
 
                 <div class="result-content">
 
@@ -621,18 +725,18 @@
             </div>
 
 
-            <!-- ================= ERROR ================= -->
+            <!-- =================================================
+                 ERROR
+                 ================================================= -->
 
-            <div
-                id="error"
-                class="error hidden"
-            ></div>
-
+            <div id="error" class="error hidden"></div>
 
         </section>
 
 
-        <!-- ================= FOOTER ================= -->
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
 
         <footer>
 
@@ -640,7 +744,9 @@
                 Machine Learning Price Prediction
             </span>
 
-            <span class="footer-separator">•</span>
+            <span class="footer-separator">
+                •
+            </span>
 
             <span>
                 XGBoost Regression
@@ -650,6 +756,10 @@
 
     </main>
 
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
 
     <script src="/static/script.js"></script>
 

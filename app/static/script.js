@@ -355,3 +355,34 @@ resetButton.addEventListener(
 
     }
 );
+
+const themeToggle = document.getElementById("themeToggle");
+const themeIcon = document.getElementById("themeIcon");
+const themeText = document.getElementById("themeText");
+
+function setTheme(theme) {
+    if (theme === "dark") {
+        document.body.classList.add("dark-mode");
+
+        themeIcon.textContent = "☀";
+        themeText.textContent = "Light mode";
+    } else {
+        document.body.classList.remove("dark-mode");
+
+        themeIcon.textContent = "🌙";
+        themeText.textContent = "Dark mode";
+    }
+
+    localStorage.setItem("theme", theme);
+}
+
+const savedTheme = localStorage.getItem("theme") || "light";
+
+setTheme(savedTheme);
+
+themeToggle.addEventListener("click", () => {
+    const isDark =
+        document.body.classList.contains("dark-mode");
+
+    setTheme(isDark ? "light" : "dark");
+});

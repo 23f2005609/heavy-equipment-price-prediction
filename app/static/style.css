@@ -10,142 +10,175 @@
 }
 
 :root {
-    --navy-950: #07111f;
-    --navy-900: #0b1729;
-    --navy-800: #10223a;
+    --bg: #e9eef8;
+    --bg-secondary: #dce6f7;
 
-    --blue-700: #2563eb;
-    --blue-600: #3b82f6;
-    --blue-500: #60a5fa;
+    --card: rgba(255, 255, 255, 0.82);
+    --input-bg: rgba(255, 255, 255, 0.7);
 
-    --text-dark: #0f1f36;
-    --text: #24364d;
-    --text-muted: #64748b;
+    --text: #17243a;
+    --text-secondary: #64748b;
 
-    --border: #dbe4ef;
-    --border-light: #e8eef5;
+    --primary: #3564b5;
+    --primary-dark: #244a91;
 
-    --surface: #ffffff;
-    --surface-soft: #f7faff;
+    --border: #cbd5e1;
+    --divider: #d7deea;
 
-    --success: #16a34a;
-    --danger: #dc2626;
+    --shadow: rgba(31, 41, 55, 0.12);
 
-    --shadow-lg:
-        0 30px 70px rgba(7, 17, 31, 0.14),
-        0 10px 30px rgba(37, 99, 235, 0.07);
+    --optional-bg: #e9edf3;
+    --optional-text: #64748b;
 
-    --shadow-md:
-        0 12px 30px rgba(15, 31, 54, 0.08);
+    --success-bg: #ecfdf5;
+    --success-border: #9de0c0;
+    --success-text: #166534;
 }
 
 
-/* =========================================================
-BODY
-   ========================================================= */
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark-mode {
+    --bg: #0b1220;
+    --bg-secondary: #111b2e;
+
+    --card: rgba(20, 30, 48, 0.9);
+    --input-bg: #111c2f;
+
+    --text: #edf3ff;
+    --text-secondary: #9caec8;
+
+    --primary: #6d9cff;
+    --primary-dark: #4d7fe5;
+
+    --border: #2b3b56;
+    --divider: #2a3953;
+
+    --shadow: rgba(0, 0, 0, 0.35);
+
+    --optional-bg: #243248;
+    --optional-text: #9caec8;
+
+    --success-bg: rgba(20, 83, 45, 0.25);
+    --success-border: #347b54;
+    --success-text: #8ee6b3;
+}
+
+
+/* =========================
+   BODY
+========================= */
 
 body {
+    min-height: 100vh;
+
     font-family:
         Inter,
-        ui-sans-serif,
         system-ui,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
 
-    color: var(--text);
-
-    min-height: 100vh;
-
     background:
         radial-gradient(
-            circle at 15% 5%,
-            rgba(59, 130, 246, 0.20),
-            transparent 28%
+            circle at top left,
+            var(--bg-secondary),
+            transparent 45%
         ),
-        radial-gradient(
-            circle at 85% 20%,
-            rgba(37, 99, 235, 0.13),
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
-            #eef4fb 0%,
-            #f6f9fd 45%,
-            #eaf1f9 100%
-        );
+        var(--bg);
 
-    line-height: 1.5;
+    color: var(--text);
+
+    transition:
+        background 0.35s ease,
+        color 0.35s ease;
 }
 
 
-/* =========================================================
-   BACKGROUND DECORATION
-   ========================================================= */
-
-.background-glow {
-    position: fixed;
-
-    width: 420px;
-    height: 420px;
-
-    border-radius: 50%;
-
-    pointer-events: none;
-
-    filter: blur(80px);
-
-    opacity: 0.25;
-
-    z-index: -1;
-}
-
-.glow-one {
-    top: -180px;
-    left: -120px;
-
-    background: #3b82f6;
-}
-
-.glow-two {
-    right: -150px;
-    bottom: -180px;
-
-    background: #6366f1;
-}
-
-
-/* =========================================================
+/* =========================
    PAGE
-   ========================================================= */
+========================= */
 
 .page {
-    width: min(1120px, calc(100% - 40px));
+    width: min(1200px, calc(100% - 40px));
 
     margin: 0 auto;
 
-    padding: 64px 0 40px;
+    padding: 60px 0 40px;
 }
 
 
-/* =========================================================
+/* =========================
    HERO
-   ========================================================= */
+========================= */
 
 .hero {
     display: flex;
 
     align-items: center;
 
-    gap: 24px;
+    gap: 28px;
 
-    margin-bottom: 34px;
+    margin-bottom: 36px;
+
+    position: relative;
 }
 
+
+/* =========================
+   THEME BUTTON
+========================= */
+
+.theme-toggle {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    border: 1px solid var(--border);
+
+    background: var(--card);
+
+    color: var(--text);
+
+    padding: 10px 16px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    box-shadow:
+        0 6px 20px var(--shadow);
+
+    transition:
+        transform 0.2s ease,
+        background 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   BRAND ICON
+========================= */
+
 .brand-icon {
-    width: 76px;
-    height: 76px;
+    width: 82px;
+    height: 82px;
 
     flex-shrink: 0;
 
@@ -154,98 +187,91 @@ body {
     align-items: center;
     justify-content: center;
 
-    border-radius: 22px;
-
-    font-size: 34px;
-
-    color: white;
+    font-size: 36px;
 
     background:
         linear-gradient(
-            145deg,
-            #17345c,
-            #0b1729
+            135deg,
+            #17243a,
+            #0b1424
         );
 
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 22px;
 
     box-shadow:
-        0 18px 35px rgba(15, 31, 54, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        0 14px 35px
+        rgba(31, 41, 55, 0.28);
 }
 
 
-/* Eyebrow */
+/* =========================
+   HERO TEXT
+========================= */
 
 .eyebrow {
-    margin-bottom: 9px;
+    color: var(--primary);
 
-    font-size: 13px;
+    font-size: 14px;
 
-    font-weight: 600;
+    font-weight: 800;
 
-    letter-spacing: 0.12em;
+    letter-spacing: 2px;
 
-    color: var(--blue-700);
+    margin-bottom: 10px;
 }
 
-
-/* Main title */
-
 .hero h1 {
-    font-size: clamp(38px, 5vw, 58px);
+    font-size: clamp(42px, 6vw, 64px);
 
-    line-height: 1.04;
+    line-height: 1.05;
 
-    letter-spacing: -0.045em;
+    letter-spacing: -2px;
 
-    font-weight: 600;
-
-    color: var(--navy-950);
+    font-weight: 800;
 }
 
 .hero h1 span {
-    color: var(--blue-700);
+    color: var(--primary);
 }
-
-
-/* Subtitle */
 
 .subtitle {
     margin-top: 14px;
 
-    font-size: 17px;
+    color: var(--text-secondary);
 
-    color: #3d4957;
-
-    max-width: 680px;
+    font-size: 18px;
 }
 
 
-/* =========================================================
+/* =========================
    MAIN CARD
-   ========================================================= */
+========================= */
 
 .prediction-card {
-    position: relative;
+    width: 100%;
 
-    background: rgba(255, 255, 255, 0.96);
+    background: var(--card);
 
-    border: 1px solid rgba(210, 222, 237, 0.95);
+    border: 1px solid var(--border);
 
-    border-radius: 28px;
+    border-radius: 26px;
 
     padding: 42px;
 
-    box-shadow: var(--shadow-lg);
+    box-shadow:
+        0 20px 60px var(--shadow);
 
-    backdrop-filter: blur(14px);
+    backdrop-filter: blur(16px);
+
+    transition:
+        background 0.3s ease,
+        border 0.3s ease;
 }
 
 
-/* =========================================================
+/* =========================
    CARD HEADER
-   ========================================================= */
+========================= */
 
 .card-header {
     display: flex;
@@ -256,97 +282,89 @@ body {
 
     gap: 24px;
 
-    padding-bottom: 30px;
+    padding-bottom: 34px;
 
-    border-bottom: 1px solid var(--border-light);
+    border-bottom:
+        1px solid var(--divider);
 
-    margin-bottom: 34px;
+    margin-bottom: 36px;
 }
 
 .card-header h2 {
-    font-size: 27px;
+    font-size: 30px;
 
-    line-height: 1.2;
-
-    color: var(--navy-950);
-
-    font-weight: 800;
-
-    letter-spacing: -0.025em;
+    margin-bottom: 10px;
 }
 
 .card-header p {
-    margin-top: 8px;
+    color: var(--text-secondary);
+
+    font-size: 17px;
 
     max-width: 650px;
 
-    color: var(--text-muted);
-
-    font-size: 15px;
+    line-height: 1.6;
 }
 
 
-/* =========================================================
-   MODEL STATUS
-   ========================================================= */
+/* =========================
+   MODEL BADGE
+========================= */
 
 .model-badge {
-    display: inline-flex;
+    white-space: nowrap;
+
+    display: flex;
 
     align-items: center;
 
-    gap: 9px;
+    gap: 10px;
 
-    flex-shrink: 0;
+    color: var(--success-text);
 
-    padding: 10px 15px;
+    background: var(--success-bg);
+
+    border:
+        1px solid var(--success-border);
+
+    padding: 12px 18px;
 
     border-radius: 999px;
 
-    color: #087443;
+    font-size: 15px;
 
-    background: #ecfdf5;
-
-    border: 1px solid #b7efd1;
-
-    font-size: 13px;
-
-    font-weight: 750;
-
-    box-shadow:
-        0 5px 15px rgba(22, 163, 74, 0.08);
+    font-weight: 700;
 }
 
 .status-dot {
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
 
     border-radius: 50%;
 
-    background: #22c55e;
-
-    box-shadow:
-        0 0 0 4px rgba(34, 197, 94, 0.12);
+    background: #22a866;
 }
 
 
-/* =========================================================
-   SECTION TITLES
-   ========================================================= */
+/* =========================
+   SECTION TITLE
+========================= */
 
 .section-title {
     display: flex;
 
     align-items: center;
 
-    gap: 14px;
+    gap: 16px;
 
-    margin: 36px 0 22px;
+    margin-top: 34px;
+
+    margin-bottom: 26px;
 }
 
 .section-number {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
 
     flex-shrink: 0;
 
@@ -355,51 +373,54 @@ body {
     align-items: center;
     justify-content: center;
 
-    border-radius: 13px;
-
-    color: var(--blue-700);
+    border-radius: 14px;
 
     background:
         linear-gradient(
-            145deg,
-            #edf4ff,
-            #e5efff
+            135deg,
+            #e7eefc,
+            #d7e3fa
         );
 
-    border: 1px solid #d6e5ff;
+    color: var(--primary);
 
-    font-size: 14px;
+    font-weight: 800;
 
-    font-weight: 850;
+    font-size: 15px;
+}
+
+.dark-mode .section-number {
+    background: #1c2c46;
 }
 
 .section-title h3 {
-    color: var(--navy-950);
+    font-size: 21px;
 
-    font-size: 18px;
-
-    font-weight: 800;
+    margin-bottom: 5px;
 }
 
 .section-title p {
-    margin-top: 2px;
+    color: var(--text-secondary);
 
-    color: var(--text-muted);
-
-    font-size: 13px;
+    font-size: 15px;
 }
 
 
-/* =========================================================
+/* =========================
    FORM GRID
-   ========================================================= */
+========================= */
 
 .form-grid {
     display: grid;
 
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
 
-    gap: 24px 28px;
+    gap: 26px 30px;
+}
+
+.form-group {
+    min-width: 0;
 }
 
 .full-width {
@@ -407,330 +428,190 @@ body {
 }
 
 
-/* =========================================================
-   FORM GROUP
-   ========================================================= */
+/* =========================
+   LABELS
+========================= */
 
-.form-group {
-    min-width: 0;
-}
+label {
+    display: block;
 
-.form-group label {
-    display: flex;
+    margin-bottom: 10px;
 
-    align-items: center;
-
-    gap: 7px;
-
-    margin-bottom: 9px;
-
-    color: #142842;
-
-    font-size: 14px;
+    font-size: 15px;
 
     font-weight: 750;
+
+    color: var(--text);
 }
-
-
-/* Required */
 
 .required {
     color: #dc2626;
 
-    font-size: 15px;
+    margin-left: 4px;
 }
 
-
-/* Optional badge */
-
 .optional {
-    display: inline-flex;
+    display: inline-block;
 
-    align-items: center;
+    margin-left: 7px;
 
-    padding: 3px 8px;
+    padding: 4px 9px;
 
     border-radius: 999px;
 
-    color: #718096;
+    background: var(--optional-bg);
 
-    background: #f1f4f8;
+    color: var(--optional-text);
 
-    font-size: 11px;
+    font-size: 12px;
 
-    font-weight: 700;
+    font-weight: 600;
 }
 
 
-/* =========================================================
-   INPUTS / SELECTS
-   ========================================================= */
+/* =========================
+   INPUTS
+========================= */
 
-.form-group input,
-.form-group select {
+input,
+select {
     width: 100%;
 
-    height: 54px;
+    height: 60px;
 
-    padding: 0 16px;
+    padding:
+        0 18px;
 
-    border-radius: 13px;
+    border:
+        1px solid var(--border);
 
-    border: 1px solid #d5dfeb;
+    border-radius: 14px;
+
+    background: var(--input-bg);
+
+    color: var(--text);
+
+    font-size: 16px;
 
     outline: none;
 
-    background: #fbfdff;
-
-    color: #13263f;
-
-    font-size: 15px;
-
-    font-family: inherit;
-
     transition:
-        border-color 0.2s ease,
+        border 0.2s ease,
         box-shadow 0.2s ease,
-        background 0.2s ease,
-        transform 0.2s ease;
+        background 0.3s ease;
 }
 
-
-/* Select arrow */
-
-.form-group select {
-    cursor: pointer;
-
-    appearance: auto;
+input::placeholder {
+    color: #8a98ac;
 }
 
-
-/* Placeholder */
-
-.form-group input::placeholder {
-    color: #9aa9bb;
-}
-
-
-/* Focus */
-
-.form-group input:focus,
-.form-group select:focus {
-    background: white;
-
-    border-color: var(--blue-600);
+input:focus,
+select:focus {
+    border-color: var(--primary);
 
     box-shadow:
-        0 0 0 4px rgba(59, 130, 246, 0.11);
+        0 0 0 4px
+        rgba(53, 100, 181, 0.14);
 }
 
-
-/* Hover */
-
-.form-group input:hover,
-.form-group select:hover {
-    border-color: #b9c9dc;
-
-    background: white;
-}
-
-
-/* Helper text */
-
-.form-group small {
+small {
     display: block;
 
     margin-top: 8px;
 
-    color: #8090a4;
+    color: var(--text-secondary);
 
-    font-size: 12px;
+    font-size: 13px;
 
-    line-height: 1.45;
+    line-height: 1.5;
 }
 
 
-/* =========================================================
+/* =========================
    ACTIONS
-   ========================================================= */
+========================= */
 
 .actions {
     display: flex;
 
     justify-content: flex-end;
 
-    align-items: center;
-
-    gap: 13px;
+    gap: 16px;
 
     margin-top: 42px;
 
-    padding-top: 28px;
+    padding-top: 30px;
 
-    border-top: 1px solid var(--border-light);
+    border-top:
+        1px solid var(--divider);
 }
 
-
-/* Reset */
-
-.reset-button {
-    height: 50px;
-
-    padding: 0 20px;
-
-    border-radius: 12px;
-
-    border: 1px solid #d6e0eb;
-
-    background: white;
-
-    color: #506176;
-
+button {
     font-family: inherit;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition: all 0.2s ease;
 }
 
-.reset-button:hover {
-    background: #f5f8fc;
-
-    border-color: #bdcbdc;
-
-    color: #263b54;
-}
-
-
-/* Predict */
-
+.reset-button,
 .predict-button {
-    position: relative;
-
-    min-width: 235px;
-
-    height: 52px;
+    height: 56px;
 
     padding: 0 24px;
 
+    border-radius: 14px;
+
+    font-size: 15px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.reset-button {
+    background: transparent;
+
+    border:
+        1px solid var(--border);
+
+    color: var(--text);
+}
+
+.predict-button {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
     border: none;
 
-    border-radius: 13px;
+    color: white;
 
     background:
         linear-gradient(
             135deg,
-            #2563eb,
-            #1d4ed8
+            var(--primary),
+            var(--primary-dark)
         );
 
-    color: white;
-
-    font-family: inherit;
-
-    font-size: 14px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.01em;
-
-    cursor: pointer;
-
     box-shadow:
-        0 10px 22px rgba(37, 99, 235, 0.24);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        filter 0.2s ease;
+        0 10px 24px
+        rgba(53, 100, 181, 0.28);
 }
 
+.reset-button:hover,
 .predict-button:hover {
     transform: translateY(-2px);
-
-    filter: brightness(1.04);
-
-    box-shadow:
-        0 15px 28px rgba(37, 99, 235, 0.30);
-}
-
-.predict-button:active {
-    transform: translateY(0);
-}
-
-.predict-button:disabled {
-    opacity: 0.7;
-
-    cursor: not-allowed;
-
-    transform: none;
 }
 
 
-/* =========================================================
-   SPINNER
-   ========================================================= */
-
-.spinner {
-    display: inline-block;
-
-    width: 17px;
-    height: 17px;
-
-    margin-left: 8px;
-
-    vertical-align: middle;
-
-    border: 2px solid rgba(255, 255, 255, 0.35);
-
-    border-top-color: white;
-
-    border-radius: 50%;
-
-    animation: spin 0.7s linear infinite;
-}
-
-.hidden {
-    display: none !important;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-/* =========================================================
-   LOADING
-   ========================================================= */
-
-.loading {
-    margin-top: 22px;
-
-    padding: 15px 18px;
-
-    border-radius: 12px;
-
-    color: #315a8e;
-
-    background: #eff6ff;
-
-    border: 1px solid #d6e8ff;
-
-    font-size: 14px;
-
-    text-align: center;
-}
-
-
-/* =========================================================
+/* =========================
    RESULT
-   ========================================================= */
+========================= */
 
 .result {
     display: flex;
@@ -741,37 +622,17 @@ body {
 
     margin-top: 30px;
 
-    padding: 25px;
+    padding: 28px;
 
-    border-radius: 20px;
+    border-radius: 18px;
 
     background:
-        linear-gradient(
-            135deg,
-            #f0fdf7,
-            #f7fffb
-        );
+        rgba(34, 197, 94, 0.08);
 
-    border: 1px solid #b9efd1;
-
-    box-shadow:
-        0 12px 30px rgba(22, 163, 74, 0.08);
-
-    animation: resultIn 0.35s ease-out;
+    border:
+        1px solid
+        rgba(34, 197, 94, 0.25);
 }
-
-@keyframes resultIn {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 
 .result-icon {
     width: 52px;
@@ -784,155 +645,176 @@ body {
     align-items: center;
     justify-content: center;
 
-    border-radius: 15px;
+    border-radius: 50%;
+
+    background: #22a866;
 
     color: white;
 
-    background:
-        linear-gradient(
-            145deg,
-            #22c55e,
-            #16a34a
-        );
+    font-size: 25px;
 
-    font-size: 24px;
+    font-weight: bold;
+}
+
+.result-label {
+    color: var(--text-secondary);
+
+    font-size: 12px;
 
     font-weight: 800;
 
-    box-shadow:
-        0 8px 18px rgba(22, 163, 74, 0.20);
+    letter-spacing: 1.5px;
+}
+
+#predictedPrice {
+    margin: 5px 0;
+
+    font-size: 38px;
+
+    color: var(--success-text);
 }
 
 
-.result-label {
-    color: #54806a;
+/* =========================
+   LOADING / ERROR
+========================= */
 
-    font-size: 11px;
+.loading,
+.error {
+    margin-top: 24px;
 
-    font-weight: 850;
+    padding: 18px;
 
-    letter-spacing: 0.13em;
+    border-radius: 14px;
+
+    font-weight: 600;
 }
 
-.result-content h2 {
-    margin-top: 2px;
+.loading {
+    background:
+        rgba(53, 100, 181, 0.1);
 
-    color: #087443;
-
-    font-size: clamp(30px, 5vw, 42px);
-
-    line-height: 1.1;
-
-    letter-spacing: -0.035em;
-
-    font-weight: 850;
+    color: var(--primary);
 }
-
-.result-description {
-    margin-top: 5px;
-
-    color: #698175;
-
-    font-size: 13px;
-}
-
-
-/* =========================================================
-   ERROR
-   ========================================================= */
 
 .error {
-    margin-top: 20px;
+    background:
+        rgba(220, 38, 38, 0.1);
 
-    padding: 14px 17px;
-
-    border-radius: 12px;
-
-    color: #991b1b;
-
-    background: #fef2f2;
-
-    border: 1px solid #fecaca;
-
-    font-size: 14px;
+    color: #dc2626;
 }
 
 
-/* =========================================================
+/* =========================
+   SPINNER
+========================= */
+
+.spinner {
+    width: 18px;
+    height: 18px;
+
+    border: 3px solid
+        rgba(255, 255, 255, 0.35);
+
+    border-top-color: white;
+
+    border-radius: 50%;
+
+    animation:
+        spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================
+   UTILITIES
+========================= */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================
    FOOTER
-   ========================================================= */
+========================= */
 
 footer {
     display: flex;
 
-    align-items: center;
     justify-content: center;
+
+    align-items: center;
 
     gap: 10px;
 
-    margin-top: 28px;
+    margin-top: 30px;
 
-    color: #73849a;
+    color: var(--text-secondary);
 
-    font-size: 12px;
-
-    font-weight: 600;
-
-    text-align: center;
+    font-size: 14px;
 }
 
 .footer-separator {
-    color: #a9b5c4;
+    color: var(--primary);
 }
 
 
-/* =========================================================
+/* =========================
    RESPONSIVE
-   ========================================================= */
+========================= */
 
 @media (max-width: 800px) {
 
     .page {
-        width: min(100% - 24px, 680px);
+        width: min(100% - 24px, 1200px);
 
-        padding-top: 35px;
+        padding-top: 80px;
     }
 
     .hero {
-        align-items: flex-start;
-
         gap: 16px;
     }
 
     .brand-icon {
-        width: 60px;
-        height: 60px;
+        width: 64px;
+        height: 64px;
 
-        border-radius: 17px;
+        font-size: 28px;
 
-        font-size: 27px;
+        border-radius: 18px;
     }
 
     .hero h1 {
-        font-size: 38px;
+        font-size: 40px;
+    }
+
+    .theme-toggle {
+        top: -55px;
+        right: 0;
     }
 
     .prediction-card {
-        padding: 28px 22px;
+        padding: 26px 20px;
 
         border-radius: 22px;
     }
 
     .card-header {
         flex-direction: column;
+    }
 
-        align-items: flex-start;
+    .model-badge {
+        align-self: flex-start;
     }
 
     .form-grid {
         grid-template-columns: 1fr;
-
-        gap: 20px;
     }
 
     .full-width {
@@ -941,97 +823,15 @@ footer {
 
     .actions {
         flex-direction: column-reverse;
-
-        align-items: stretch;
     }
 
-    .predict-button,
-    .reset-button {
+    .reset-button,
+    .predict-button {
         width: 100%;
-    }
-}
-
-
-@media (max-width: 500px) {
-
-    .page {
-        width: calc(100% - 18px);
-
-        padding-top: 24px;
-    }
-
-    .hero {
-        gap: 12px;
-    }
-
-    .brand-icon {
-        width: 52px;
-        height: 52px;
-
-        font-size: 23px;
-
-        border-radius: 15px;
-    }
-
-    .eyebrow {
-        font-size: 10px;
-
-        letter-spacing: 0.11em;
-    }
-
-    .hero h1 {
-        font-size: 31px;
-    }
-
-    .subtitle {
-        font-size: 14px;
-    }
-
-    .prediction-card {
-        padding: 23px 17px;
-    }
-
-    .card-header h2 {
-        font-size: 23px;
-    }
-
-    .section-title {
-        margin-top: 30px;
-    }
-
-    .section-number {
-        width: 39px;
-        height: 39px;
-
-        border-radius: 11px;
-    }
-
-    .section-title h3 {
-        font-size: 16px;
-    }
-
-    .result {
-        padding: 19px;
-
-        gap: 14px;
-    }
-
-    .result-icon {
-        width: 45px;
-        height: 45px;
-
-        font-size: 20px;
     }
 
     footer {
-        flex-direction: column;
-
-        gap: 3px;
-
-        padding-bottom: 15px;
+        flex-wrap: wrap;
     }
 
-    .footer-separator {
-        display: none;
-    }
 }
