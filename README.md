@@ -2,9 +2,9 @@
 
 > **An end-to-end machine learning application for predicting the resale price of heavy equipment using XGBoost, feature engineering, FastAPI, and a production-ready web interface.**
 
-🔗 **Live Demo:** https://heavy-equipment-price-prediction.onrender.com/
+🎥 **Video Presentation:** https://drive.google.com/file/d/1rOeKSSqX3Xrxz4j8PBWZVdg-S5cpv9ZC/view?usp=sharing
 
-📦 **GitHub:** https://github.com/23f2005609/heavy-equipment-price-prediction
+🔗 **Live Demo:** https://heavy-equipment-price-prediction.onrender.com/
 
 ---
 
